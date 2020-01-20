@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery.js"></script>
+</head>
+<body>
+
+<button id="crystal1">one
+</button>    
+<button id="crystal2">two</button>    
+<button id="crystal3">three</button>    
+<button id="crystal4">four</button>   
+<div id=scoreKeeper>0</div> 
+<div id=winscorekeeper>0</div>
+<div id=resetdiv></div>
+
+<script>
+
+      
+var totalScore = 0;
+var possiblescoreaders = [2,3,4,5];
+
+
+
+var winScore = 0;
+resetGame();
+
+var random1 = [Math.floor((Math.random() * 4))];
+var crystal1Score = possiblescoreaders[random1];
+possiblescoreaders.splice(random1, 1);
+console.log(possiblescoreaders);
+
+var random2 = [Math.floor((Math.random() * 3))];
+var crystal2Score =possiblescoreaders[random2];
+possiblescoreaders.splice(random2, 1);
+console.log(possiblescoreaders);
+
+var random3 = [Math.floor((Math.random() * 2))];
+var crystal3Score =possiblescoreaders[random3];
+possiblescoreaders.splice(random3, 1);
+console.log(possiblescoreaders);
+
+var crystal4Score = possiblescoreaders[0];
+
+function resetGame(){
+totalScore = 0;
+$("#scoreKeeper").html(totalScore);
+winScore = [Math.floor((Math.random() * 20) + 40)];
+console.log(winScore);
+$("#winscorekeeper").html(winScore);
+};
+
+console.log(crystal1Score);
+console.log(crystal2Score);
+console.log(crystal3Score);
+console.log(crystal4Score);
+
+
+console.log(totalScore);
+$("#crystal1").on("click", function() {
+totalScore = totalScore + crystal1Score;
+console.log(totalScore);
+$("#scoreKeeper").html(totalScore);
+winloselogic();
+});
+
+$("#crystal2").on("click", function() {
+    totalScore = totalScore + crystal2Score;
+console.log(totalScore);
+$("#scoreKeeper").html(totalScore);
+winloselogic();
+});
+
+$("#crystal3").on("click", function() {
+    totalScore = totalScore + crystal3Score;
+console.log(totalScore);
+$("#scoreKeeper").html(totalScore);
+winloselogic();
+});
+
+$("#crystal4").on("click", function() {
+totalScore = totalScore + crystal4Score;
+console.log(totalScore);
+$("#scoreKeeper").html(totalScore);
+winloselogic();
+});
+
+
+function resetGameButton(){
+
+var r = $('<input/>').attr({type: "button", id: "resetbutton", value: "Reset", });
+$("#resetdiv").append(r);
+$("#resetbutton").on("click", function(){
+resetGame();
+$("#resetdiv").empty();
+});
+};
+
+function winloselogic(){
+    if (winScore == totalScore){
+alert("you win");
+resetGameButton();
+}
+if (parseInt(totalScore, 10) > winScore){
+alert("you loose!");
+resetGameButton();
+}
+
+};
+
+
+        
+        
+</script>
+</body>
+</html>
