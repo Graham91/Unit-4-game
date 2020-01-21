@@ -28,10 +28,25 @@
     <img class="crystalimg" src="./assets/images/StarCrystal4.png">
 </div>  
 </div> 
-<div id=scoreKeeper>0</div> 
-<div id=winscorekeeper>0</div>
-<div id=resetdiv></div>
 
+<div id="mainlowerbox">
+    <div class="lowerboxes">
+       <div id="score">
+        <div class="scoreword">Your score:</div>
+<div id=scoreKeeper class="numberboxes">0</div> 
+    </div>
+    <div id="score">
+        <div class="scoreword">Intended score:</div>
+    <div id=winscorekeeper class="numberboxes">0</div>
+    </div>
+    </div>
+    <div class="lowerboxes">
+
+        <div id="resetdiv">
+        </div>
+        <div class="finalee"></div>
+    </div>
+</div>
 <script>
 
       
@@ -106,21 +121,26 @@ winloselogic();
 
 function resetGameButton(){
 
-var r = $('<input/>').attr({type: "button", id: "resetbutton", value: "Reset", });
-$("#resetdiv").append(r);
-$("#resetbutton").on("click", function(){
+var r = $('<input/>').attr({type: "img", src: "./assets/images/reset.png"});
+$("#resetdiv").append("<img  src ='./assets/images/reset.png' class='resetbutton' style='width:200px height:200px;'>");
+
+$(".resetbutton").on("click", function(){
 resetGame();
 $("#resetdiv").empty();
+$(".finalee").empty();
+
 });
 };
 
 function winloselogic(){
     if (winScore == totalScore){
-alert("you win");
+$(".finalee").html("YOU WIN!");
+
 resetGameButton();
 }
 if (parseInt(totalScore, 10) > winScore){
-alert("you loose!");
+$(".finalee").html("YOU LOSE!");
+
 resetGameButton();
 }
 
