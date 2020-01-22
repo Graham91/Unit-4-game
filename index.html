@@ -53,28 +53,34 @@
 var totalScore = 0;
 var possiblescoreaders = [2,3,4,5];
 var gameisrunning = true;
-
+var crystal1Score = 0;
+var crystal2Score = 0;
+var crystal3Score = 0;
+var crystal4Score = 0;
 
 
 var winScore = 0;
 resetGame();
+getnumbersforcrystals();
 
+function getnumbersforcrystals(){
+    possiblescoreaders = [2,3,4,5];
 var random1 = [Math.floor((Math.random() * 4))];
-var crystal1Score = possiblescoreaders[random1];
+crystal1Score = possiblescoreaders[random1];
 possiblescoreaders.splice(random1, 1);
 console.log(possiblescoreaders);
 
 var random2 = [Math.floor((Math.random() * 3))];
-var crystal2Score =possiblescoreaders[random2];
+crystal2Score =possiblescoreaders[random2];
 possiblescoreaders.splice(random2, 1);
 console.log(possiblescoreaders);
 
 var random3 = [Math.floor((Math.random() * 2))];
-var crystal3Score =possiblescoreaders[random3];
+crystal3Score =possiblescoreaders[random3];
 possiblescoreaders.splice(random3, 1);
 console.log(possiblescoreaders);
 
-var crystal4Score = possiblescoreaders[0];
+crystal4Score = possiblescoreaders[0];}
 
 function resetGame(){
 totalScore = 0;
@@ -130,6 +136,7 @@ $(".resetbutton").on("click", function(){
 resetGame();
 $("#resetdiv").empty();
 $(".finalee").empty();
+getnumbersforcrystals();
 
 });
 };
@@ -140,12 +147,21 @@ if (gameisrunning === true)  {
 $(".finalee").html("YOU WIN!");
 resetGameButton();
 gameisrunning = false;
+crystal1Score = 0;
+crystal2Score = 0;
+crystal3Score = 0;
+crystal4Score = 0;
+
 
 }
 if (parseInt(totalScore, 10) > winScore){
 $(".finalee").html("YOU LOSE!");
 resetGameButton();
 gameisrunning = false;
+crystal1Score = 0;
+crystal2Score = 0;
+crystal3Score = 0;
+crystal4Score = 0;
 }
 }
 };
