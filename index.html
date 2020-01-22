@@ -52,6 +52,7 @@
       
 var totalScore = 0;
 var possiblescoreaders = [2,3,4,5];
+var gameisrunning = true;
 
 
 
@@ -81,6 +82,7 @@ $("#scoreKeeper").html(totalScore);
 winScore = [Math.floor((Math.random() * 20) + 40)];
 console.log(winScore);
 $("#winscorekeeper").html(winScore);
+gameisrunning=true;
 };
 
 console.log(crystal1Score);
@@ -133,17 +135,19 @@ $(".finalee").empty();
 };
 
 function winloselogic(){
+if (gameisrunning === true)  { 
     if (winScore == totalScore){
 $(".finalee").html("YOU WIN!");
-
 resetGameButton();
+gameisrunning = false;
+
 }
 if (parseInt(totalScore, 10) > winScore){
 $(".finalee").html("YOU LOSE!");
-
 resetGameButton();
+gameisrunning = false;
 }
-
+}
 };
 
 
